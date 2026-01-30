@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tai Chi Vital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <div id="home-screen" class="screen active">
+            <div class="brand-header">
+                <div class="logo-icon">🧘</div>
+                <div>
+                    <h1>Tai Chi Vital</h1>
+                    <p class="subtitle">Tu energía diaria</p>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="welcome-box">
+                    <h2>👋 Hola</h2>
+                    <p>Listo para tu sesión de hoy?</p>
+                </div>
+
+                <div class="routine-list">
+                    <h3>Rutina de Hoy</h3>
+                    <ul>
+                        <li><span class="chk">🌱</span> Calentamiento <span class="time">5 min</span></li>
+                        <li><span class="chk">🌊</span> Tonificación <span class="time">15 min</span></li>
+                        <li><span class="chk">🔥</span> Quema-Grasa <span class="time">2 min</span></li>
+                        <li><span class="chk">🧘</span> Estiramientos <span class="time">3 min</span></li>
+                    </ul>
+                </div>
+
+                <button id="start-btn" class="btn-main" onclick="startRoutine()">COMENZAR RUTINA</button>
+            </div>
+        </div>
+
+        <div id="workout-screen" class="screen">
+            <div class="top-nav">
+                <button class="btn-icon" onclick="quitRoutine()">✕</button>
+                <span id="phase-badge">Calentamiento</span>
+                <div class="spacer"></div>
+            </div>
+            
+            <div class="exercise-card">
+                <div class="image-container">
+                    <img id="exercise-img" src="" alt="Ejercicio demostración">
+                    <div id="breathing-indicator" class="breath-overlay"></div>
+                </div>
+                
+                <div class="info-container">
+                    <h2 id="exercise-name">Cargando...</h2>
+                    <p id="exercise-instruction">Instrucción del ejercicio...</p>
+                </div>
+            </div>
+
+            <div class="bottom-panel">
+                <div class="timer-box">
+                    <svg class="progress-ring" width="80" height="80">
+                        <circle class="progress-ring__circle" stroke="#4A90E2" stroke-width="6" fill="transparent" r="36" cx="40" cy="40"/>
+                    </svg>
+                    <span id="timer">00:00</span>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="pause-btn" class="btn-round" onclick="togglePause()">II</button>
+                    <button id="skip-btn" class="btn-pill" onclick="nextExercise()">Siguiente ⏭</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="finish-screen" class="screen">
+            <div class="celebration-card">
+                <div class="big-icon">🎉</div>
+                <h1>¡Sesión Completada!</h1>
+                <p>Has invertido 25 minutos en tu salud.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-val">🔥</span>
+                        <span class="stat-label">Activado</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">😊</span>
+                        <span class="stat-label">Relajado</span>
+                    </div>
+                </div>
+
+                <button class="btn-main" onclick="location.reload()">VOLVER AL INICIO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
