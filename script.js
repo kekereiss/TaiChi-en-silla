@@ -5,70 +5,70 @@ const routine = [
         name: "Rotación de Cuello", 
         duration: 30, 
         phase: "Calentamiento", 
-        img: "assets\Rotacion de cuello.png", // Cambiar por: 'assets/cuello.gif'
+        img: "assets/Rotacion de cuello.png", // Cambiar por: 'assets/cuello.gif'
         instruction: "Gira el cuello suavemente. No fuerces." 
     },
     { 
         name: "Acariciar las Nubes", 
         duration: 45, 
         phase: "Calentamiento", 
-        img: "assets\Acariciar las nubes.png", 
+        img: "assets/Acariciar las nubes.png", 
         instruction: "Inhala subiendo brazos, exhala bajando." 
     },
     { 
         name: "Giro de Cintura", 
         duration: 45, 
         phase: "Calentamiento", 
-        img: "assets\Giro de cintura.png", 
+        img: "assets/Giro de cintura.png", 
         instruction: "Manos en rodillas, gira el torso suavemente." 
     },
     { 
         name: "Repeler al Mono", 
         duration: 60, 
         phase: "Tonificación", 
-        img: "assets\Repeler al mono.png", 
+        img: "assets/Repeler al mono.png", 
         instruction: "Empuja una mano, retira la otra mirando atrás." 
     },
     { 
         name: "Manos como Nubes", 
         duration: 60, 
         phase: "Tonificación", 
-        img: "assets\Manos como nubes.png", 
+        img: "assets/Manos como nubes.png", 
         instruction: "Mueve los brazos de lado a lado fluidamente." 
     },
     { 
         name: "Patear con Talón", 
         duration: 45, 
         phase: "Tonificación", 
-        img: "assets\Patear con talon.png", 
+        img: "assets/Patear con talon.png", 
         instruction: "Extiende la pierna lento. Sostén 2 segundos." 
     },
     { 
         name: "Empujar la Ola", 
         duration: 60, 
         phase: "Tonificación", 
-        img: "assets\Empujar la ola.png", 
+        img: "assets/Empujar la ola.png", 
         instruction: "Inclínate adelante empujando, atrás recogiendo." 
     },
     { 
         name: "Marcha Sentada", 
         duration: 120, 
         phase: "Quema-Grasa", 
-        img: "assets\Marcha sentada.png", 
+        img: "assets/Marcha sentada.png", 
         instruction: "¡Sube el ritmo! Marcha moviendo brazos." 
     },
     { 
         name: "El Gran Abrazo", 
         duration: 30, 
         phase: "Estiramiento", 
-        img: "assets\El gran abrazo.png", 
+        img: "assets/El gran abrazo.png", 
         instruction: "Abre brazos y abrázate fuerte." 
     },
     { 
         name: "Estirar Pierna", 
         duration: 30, 
         phase: "Estiramiento", 
-        img: "assets\Estirar pierna.png", 
+        img: "assets/Estirar pierna.png", 
         instruction: "Pierna recta, inclínate un poco adelante." 
     }
 ];
