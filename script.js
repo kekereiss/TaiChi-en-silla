@@ -128,6 +128,7 @@ function loadExercise() {
     source.src = exercise.img; // Aquí exercise.img ahora será la ruta al .mp4
     video.load(); // Carga el nuevo video
     video.play(); // Lo reproduce
+
     // Colores dinámicos según fase
     let color = '#4A90E2'; // Default
     if(exercise.phase === "Quema-Grasa") color = '#FF7F50';
