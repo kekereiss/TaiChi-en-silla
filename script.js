@@ -93,13 +93,22 @@ function setProgress(percent) {
 }
 
 function speak(text) {
+    if (!synth) return; // Seguridad para navegadores sin API
     if (synth.speaking) synth.cancel();
+
     const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Forzar idioma y buscar voces disponibles para Opera
+    const voices = synth.getVoices();
+    utterance.voice = voices.find(v => v.lang.startsWith('es')) || voices[0];
     utterance.lang = 'es-ES';
     utterance.rate = 0.9;
+
+    // En Opera, a veces el habla se corta. Este truco ayuda:
+    utterance.onend = () => { synth.cancel(); }; 
+    
     synth.speak(utterance);
 }
-
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -230,4 +239,9 @@ function quitRoutine() {
     clearInterval(breathInterval);
     synth.cancel();
     showScreen('home-screen');
+}
+
+// Esperar a que las voces carguen (Específico para Opera/Chrome)
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = () => synth.getVoices();
 }
