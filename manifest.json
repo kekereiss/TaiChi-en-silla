@@ -1,0 +1,15 @@
+{
+  "short_name": "TaiChiensilla",
+  "name": "Tai Chi Vital en Silla",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#4A90E2",
+  "background_color": "#F4F6F9"
+}

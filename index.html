@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tai Chi Vital</title>
+    <title>Tai Chi en silla</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+
+<div id="splash-screen">
+    <div style="font-size: 4rem;">🧘</div>
+    <h2>Tai Chi en silla</h2>
+    <div class="loader"></div>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('splash-screen').style.opacity = '0';
+      setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
+    }, 2000);
+  });
+</script>
 
     <div id="app-container">
         
@@ -15,7 +37,7 @@
             <div class="brand-header">
                 <div class="logo-icon">🧘</div>
                 <div>
-                    <h1>Tai Chi Vital</h1>
+                    <h1>Tai Chi en silla</h1>
                     <p class="subtitle">Tu energía diaria</p>
                 </div>
             </div>
