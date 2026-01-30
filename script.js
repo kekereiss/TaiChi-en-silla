@@ -121,10 +121,13 @@ function loadExercise() {
     document.getElementById('phase-badge').innerText = exercise.phase;
     document.getElementById('exercise-instruction').innerText = exercise.instruction;
     
-    // Actualizar Imagen
-    const imgElement = document.getElementById('exercise-img');
-    imgElement.src = exercise.img; 
-
+    // --- CAMBIO PARA VIDEO ---
+    const video = document.getElementById('exercise-video');
+    const source = document.getElementById('video-source');
+    
+    source.src = exercise.img; // Aquí exercise.img ahora será la ruta al .mp4
+    video.load(); // Carga el nuevo video
+    video.play(); // Lo reproduce
     // Colores dinámicos según fase
     let color = '#4A90E2'; // Default
     if(exercise.phase === "Quema-Grasa") color = '#FF7F50';
