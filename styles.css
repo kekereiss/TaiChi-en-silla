@@ -1,219 +1,63 @@
 :root {
-    --primary: #4A90E2;       /* Azul principal */
-    --secondary: #50E3C2;     /* Verde agua */
-    --accent: #FF7F50;        /* Naranja */
-    --bg-app: #F4F6F9;        /* Fondo gris muy suave */
-    --card-bg: #FFFFFF;       /* Blanco puro */
+    --primary: #4A90E2; 
+    --secondary: #50E3C2;
+    --accent: #FF7F50;
+    --bg-app: #F4F6F9;
+    --card-bg: #FFFFFF;
     --text-dark: #2C3E50;
     --text-light: #7F8C8D;
     --shadow: 0 10px 20px rgba(0,0,0,0.08);
     --radius: 24px;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    background-color: #E0E5EC; /* Fondo exterior */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+/* Base */
+body { font-family: 'Lato', sans-serif; background-color: #E0E5EC; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+#app-container { width: 100%; max-width: 420px; height: 100%; background: var(--bg-app); position: relative; overflow: hidden; display: flex; flex-direction: column; }
 
-#app-container {
-    width: 100%;
-    max-width: 420px;
-    height: 100%;
-    max-height: 900px;
-    background: var(--bg-app);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1);
-}
-
-@media (min-width: 450px) {
-    #app-container {
-        height: 95vh;
-        border-radius: 30px;
-    }
-}
-
-/* --- PANTALLAS --- */
-.screen {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    animation: fadeUnique 0.4s ease-out;
-}
-.screen.active { display: flex; }
-
-/* --- HOME --- */
-.brand-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-}
-.logo-icon { font-size: 2.5rem; margin-right: 1rem; }
-.brand-header h1 { margin: 0; font-size: 1.8rem; color: var(--text-dark); }
-.subtitle { margin: 0; color: var(--text-light); font-size: 0.9rem; }
-
-.dashboard-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.routine-list ul { list-style: none; padding: 0; }
-.routine-list li {
-    display: flex; align-items: center;
-    padding: 1rem 0; border-bottom: 1px solid #eee;
-    font-size: 1.1rem; color: var(--text-dark);
-}
-.routine-list .chk { margin-right: 10px; }
-.routine-list .time { margin-left: auto; color: var(--text-light); font-size: 0.9rem; font-weight: bold;}
-
-/* --- BOTONES --- */
-.btn-main {
-    background: var(--primary);
-    color: white; border: none;
-    padding: 1.2rem; border-radius: 16px;
-    font-size: 1.2rem; font-weight: bold;
-    width: 100%; cursor: pointer;
-    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
-    transition: transform 0.2s;
-}
-.btn-main:active { transform: scale(0.98); }
-
-/* --- PANTALLA ENTRENAMIENTO --- */
-.top-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-#phase-badge {
-    background: #E1E8F0; color: var(--text-dark);
-    padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold;
-}
-.btn-icon { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999;}
-
-.exercise-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-}
-
-.image-container {
-    width: 100%;
-    height: 60%; /* Ocupa buena parte de la tarjeta */
-    background: #f0f0f0;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.exercise-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen llene el espacio */
-}
-
-/* Efecto Respiración (Borde inferior) */
-.breath-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 6px;
-    background: var(--secondary);
-    transition: all 3s ease-in-out;
-}
-.inhale { height: 100%; opacity: 0.2; background: #81D4FA; } /* Inhalar: Llenar suave */
-.exhale { height: 6px; opacity: 1; background: #FFCC80; } /* Exhalar: Vaciar */
-
-.info-container { padding: 1.5rem; text-align: center; }
-#exercise-name { margin: 0 0 0.5rem 0; color: var(--primary); font-size: 1.6rem; }
-#exercise-instruction { color: var(--text-light); font-size: 1.2rem; line-height: 1.4; }
-
-/* Panel Inferior */
-.bottom-panel {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 1rem;
-}
-.timer-box { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;}
-.progress-ring { transform: rotate(-90deg); }
-.progress-ring__circle { transition: 0.35s stroke-dashoffset; stroke-dasharray: 226; stroke-dashoffset: 226;}
-#timer { position: absolute; font-weight: bold; font-size: 1.2rem; color: var(--text-dark); }
-
-.control-buttons { display: flex; gap: 10px; }
-.btn-round {
-    width: 50px; height: 50px; border-radius: 50%;
-    background: #fff; border: 2px solid #eee;
-    font-weight: bold; cursor: pointer;
-}
-.btn-pill {
-    padding: 0 20px; height: 50px; border-radius: 25px;
-    background: var(--text-dark); color: white; border: none;
-    font-weight: bold; cursor: pointer;
-}
-
-/* --- ANIMACIONES --- */
-@keyframes fadeUnique { from{opacity:0; transform: translateY(10px);} to{opacity:1; transform: translateY(0);} }
-
-/* Stats Grid en pantalla final */
-.stats-grid { display: flex; gap: 1rem; margin: 2rem 0; width: 100%; }
-.stat-box { flex: 1; background: #f9f9f9; padding: 1rem; border-radius: 15px; text-align: center; }
-.stat-val { display: block; font-size: 2rem; margin-bottom: 0.5rem; }
-
-/* Ajuste perfecto para el video */
-.exercise-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Esto hace que el video llene el espacio sin estirarse */
-    display: block;
-}
-
-.image-container {
-    width: 100%;
-    height: 300px; /* Altura fija para mantener consistencia */
-    background: #000; /* Fondo negro por si el video tarda en cargar */
-    position: relative;
-    overflow: hidden;
-    border-bottom: 2px solid rgba(0,0,0,0.05);
-}
-
-/* Splash Screen (Pantalla de carga inicial) */
-#splash-screen {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    color: white;
-    transition: opacity 0.5s ease;
-}
-
-.loader {
-    border: 5px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    border-top: 5px solid white;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-top: 20px;
-}
-
+/* Splash Screen */
+#splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s; }
+.loader { border: 5px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 5px solid white; width: 40px; height: 40px; animation: spin 1s linear infinite; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Screens */
+.screen { display: none; flex-direction: column; height: 100%; padding: 1.5rem; box-sizing: border-box; animation: fadeIn 0.4s; }
+.screen.active { display: flex; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Home Header */
+.brand-header { display: flex; align-items: center; margin-bottom: 1.5rem; }
+.logo-icon { font-size: 2.5rem; margin-right: 15px; }
+.brand-header h1 { margin: 0; font-size: 1.6rem; color: var(--text-dark); }
+
+/* Weekly Chart */
+.stats-card { background: var(--card-bg); border-radius: var(--radius); padding: 1.2rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+.week-chart { display: flex; justify-content: space-between; align-items: flex-end; height: 80px; margin: 1rem 0; }
+.day { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.bar { width: 10px; background: #EEF2F7; border-radius: 5px; height: 5px; transition: height 0.8s; }
+.bar.active { background: var(--primary); }
+.day span { font-size: 0.65rem; margin-top: 5px; font-weight: bold; color: var(--text-light); }
+
+/* Level Selector */
+.level-buttons { display: flex; gap: 8px; margin-top: 10px; }
+.level-btn { flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-weight: bold; }
+.level-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* Exercise Card & Video */
+.exercise-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); flex-grow: 1; display: flex; flex-direction: column; margin-bottom: 1rem; }
+.image-container { width: 100%; height: 280px; background: #000; position: relative; overflow: hidden; }
+.exercise-img { width: 100%; height: 100%; object-fit: cover; }
+.breath-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: var(--secondary); transition: all 3s ease-in-out; }
+.inhale { height: 100%; opacity: 0.2; }
+.exhale { height: 6px; opacity: 1; background: var(--accent); }
+
+/* Controls */
+.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.stat-badge { background: #FFF0F0; color: #FF4D4D; padding: 5px 12px; border-radius: 20px; font-weight: bold; }
+.btn-main { background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 16px; font-size: 1.1rem; font-weight: bold; cursor: pointer; width: 100%; }
+.timer-box { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+.progress-ring__circle { transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 226; stroke-dashoffset: 226; transition: 0.35s; }
+#timer { position: absolute; font-weight: bold; font-size: 1.2rem; }
+.bottom-panel { display: flex; align-items: center; justify-content: space-between; }
+.control-buttons { display: flex; gap: 10px; }
+.btn-round { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #ddd; background: #fff; font-weight: bold; cursor: pointer; }
+.btn-pill { padding: 0 20px; height: 50px; border-radius: 25px; background: var(--text-dark); color: white; border: none; font-weight: bold; cursor: pointer; }

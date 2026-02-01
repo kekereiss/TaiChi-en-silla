@@ -2,62 +2,60 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tai Chi en silla</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tai Chi Vital Pro en silla</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
 </head>
 <body>
 
-<link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
-
-<div id="splash-screen">
-    <div style="font-size: 4rem;">🧘</div>
-    <h2>Tai Chi en silla</h2>
-    <div class="loader"></div>
-</div>
-
-<script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('splash-screen').style.opacity = '0';
-      setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
-    }, 2000);
-  });
-</script>
+    <div id="splash-screen">
+        <div style="font-size: 5rem;">🧘</div>
+        <h1 style="color: white; margin-top: 10px;">Tai Chi Vital Pro en silla</h1>
+        <div class="loader"></div>
+    </div>
 
     <div id="app-container">
-        
         <div id="home-screen" class="screen active">
             <div class="brand-header">
                 <div class="logo-icon">🧘</div>
                 <div>
-                    <h1>Tai Chi en silla</h1>
+                    <h1>Tai Chi Vital Pro en silla</h1>
                     <p class="subtitle">Tu energía diaria</p>
                 </div>
             </div>
 
+            <div class="stats-card">
+                <h3>Progreso Semanal</h3>
+                <div class="week-chart">
+                    <div class="day"><div class="bar" id="bar-0"></div><span>L</span></div>
+                    <div class="day"><div class="bar" id="bar-1"></div><span>M</span></div>
+                    <div class="day"><div class="bar" id="bar-2"></div><span>X</span></div>
+                    <div class="day"><div class="bar" id="bar-3"></div><span>J</span></div>
+                    <div class="day"><div class="bar" id="bar-4"></div><span>V</span></div>
+                    <div class="day"><div class="bar" id="bar-5"></div><span>S</span></div>
+                    <div class="day"><div class="bar" id="bar-6"></div><span>D</span></div>
+                </div>
+                <div class="total-stats">
+                    <p>Total esta semana: <strong><span id="weekly-cals">0</span> kcal</strong></p>
+                </div>
+            </div>
+
             <div class="dashboard-card">
-                <div class="welcome-box">
-                    <h2>👋 Hola</h2>
-                    <p>Listo para tu sesión de hoy?</p>
+                <div class="level-selector">
+                    <h3>Nivel de Intensidad</h3>
+                    <div class="level-buttons">
+                        <button class="level-btn active" onclick="setLevel('Principiante', 1)">Bajo</button>
+                        <button class="level-btn" onclick="setLevel('Intermedio', 1.5)">Medio</button>
+                        <button class="level-btn" onclick="setLevel('Avanzado', 2)">Alto</button>
+                    </div>
                 </div>
-
-                <div class="routine-list">
-                    <h3>Rutina de Hoy</h3>
-                    <ul>
-                        <li><span class="chk">🌱</span> Calentamiento <span class="time">5 min</span></li>
-                        <li><span class="chk">🌊</span> Tonificación <span class="time">15 min</span></li>
-                        <li><span class="chk">🔥</span> Quema-Grasa <span class="time">2 min</span></li>
-                        <li><span class="chk">🧘</span> Estiramientos <span class="time">3 min</span></li>
-                    </ul>
-                </div>
-
                 <button id="start-btn" class="btn-main" onclick="startRoutine()">COMENZAR RUTINA</button>
             </div>
         </div>
@@ -66,21 +64,20 @@
             <div class="top-nav">
                 <button class="btn-icon" onclick="quitRoutine()">✕</button>
                 <span id="phase-badge">Calentamiento</span>
-                <div class="spacer"></div>
+                <div class="stat-badge">🔥 <span id="cal-counter">0</span> kcal</div>
             </div>
             
             <div class="exercise-card">
                 <div class="image-container">
                     <video id="exercise-video" autoplay loop muted playsinline class="exercise-img">
-                    <source id="video-source" src="" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
+                        <source id="video-source" src="" type="video/mp4">
+                    </video>
                     <div id="breathing-indicator" class="breath-overlay"></div>
                 </div>
                 
                 <div class="info-container">
                     <h2 id="exercise-name">Cargando...</h2>
-                    <p id="exercise-instruction">Instrucción del ejercicio...</p>
+                    <p id="exercise-instruction">Prepárate...</p>
                 </div>
             </div>
 
@@ -91,7 +88,6 @@
                     </svg>
                     <span id="timer">00:00</span>
                 </div>
-
                 <div class="control-buttons">
                     <button id="pause-btn" class="btn-round" onclick="togglePause()">II</button>
                     <button id="skip-btn" class="btn-pill" onclick="nextExercise()">Siguiente ⏭</button>
@@ -103,20 +99,8 @@
             <div class="celebration-card">
                 <div class="big-icon">🎉</div>
                 <h1>¡Sesión Completada!</h1>
-                <p>Has invertido 25 minutos en tu salud.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <span class="stat-val">🔥</span>
-                        <span class="stat-label">Activado</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">😊</span>
-                        <span class="stat-label">Relajado</span>
-                    </div>
-                </div>
-
-                <button class="btn-main" onclick="location.reload()">VOLVER AL INICIO</button>
+                <p>Has activado tu metabolismo correctamente.</p>
+                <button class="btn-main" onclick="location.reload()">FINALIZAR</button>
             </div>
         </div>
     </div>
